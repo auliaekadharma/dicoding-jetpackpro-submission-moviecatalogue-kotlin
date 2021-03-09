@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dicoding.akromatopsia.moviecatalogue">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue"
-        tools:ignore="GoogleAppIndexingWarning">>
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.detail.DetailTvshowActivity"
+            android:label="@string/title_activity_detail_tvshow"
+            android:theme="@style/Theme.MovieCatalogue.NoActionBar"></activity>
         <activity
             android:name=".ui.detail.DetailMovieActivity"
             android:label="@string/title_activity_detail_movie"
@@ -31,5 +33,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

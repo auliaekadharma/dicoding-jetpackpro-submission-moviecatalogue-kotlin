@@ -8,5 +8,5 @@ data class MovieEntity(
     var genres: String,
     var duration: String,
     var description: String,
-    var poster: String,
+    var poster: Int,
 )
