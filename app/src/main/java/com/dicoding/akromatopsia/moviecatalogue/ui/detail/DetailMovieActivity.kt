@@ -10,7 +10,6 @@ import com.dicoding.akromatopsia.moviecatalogue.R
 import com.dicoding.akromatopsia.moviecatalogue.data.MovieEntity
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ActivityDetailMovieBinding
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ContentDetailMovieBinding
-import com.dicoding.akromatopsia.moviecatalogue.utils.DataDummy
 
 class DetailMovieActivity : AppCompatActivity() {
 

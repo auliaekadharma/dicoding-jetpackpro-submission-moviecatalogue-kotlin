@@ -1,8 +1,7 @@
 package com.dicoding.akromatopsia.moviecatalogue.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dicoding.akromatopsia.moviecatalogue.R
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

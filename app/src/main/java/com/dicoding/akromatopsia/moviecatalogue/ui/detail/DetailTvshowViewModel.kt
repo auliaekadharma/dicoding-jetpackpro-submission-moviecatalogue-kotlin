@@ -1,7 +1,6 @@
 package com.dicoding.akromatopsia.moviecatalogue.ui.detail
 
 import androidx.lifecycle.ViewModel
-import com.dicoding.akromatopsia.moviecatalogue.data.MovieEntity
 import com.dicoding.akromatopsia.moviecatalogue.data.TvshowEntity
 import com.dicoding.akromatopsia.moviecatalogue.utils.DataDummy
 

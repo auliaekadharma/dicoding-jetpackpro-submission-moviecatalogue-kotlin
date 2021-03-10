@@ -1,18 +1,16 @@
 package com.dicoding.akromatopsia.moviecatalogue.ui.tvshow
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.akromatopsia.moviecatalogue.R
 import com.dicoding.akromatopsia.moviecatalogue.data.TvshowEntity
 import com.dicoding.akromatopsia.moviecatalogue.databinding.FragmentTvshowBinding
-import com.dicoding.akromatopsia.moviecatalogue.ui.movie.MovieViewModel
-import com.dicoding.akromatopsia.moviecatalogue.utils.DataDummy
 
 class TvshowFragment : Fragment(), TvshowFragmentCallback {
 

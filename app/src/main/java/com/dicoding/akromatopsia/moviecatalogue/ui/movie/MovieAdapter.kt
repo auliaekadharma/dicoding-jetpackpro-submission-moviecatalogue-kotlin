@@ -11,7 +11,6 @@ import com.dicoding.akromatopsia.moviecatalogue.R
 import com.dicoding.akromatopsia.moviecatalogue.data.MovieEntity
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ItemsMovieBinding
 import com.dicoding.akromatopsia.moviecatalogue.ui.detail.DetailMovieActivity
-import com.dicoding.akromatopsia.moviecatalogue.ui.tvshow.TvshowFragmentCallback
 
 class MovieAdapter(private val callback: MovieFragmentCallback) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
