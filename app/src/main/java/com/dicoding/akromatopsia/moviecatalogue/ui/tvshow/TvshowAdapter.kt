@@ -39,7 +39,8 @@ class TvshowAdapter(private val callback: TvshowFragmentCallback) : RecyclerView
         fun bind(tvshow: TvshowEntity) {
             with(binding) {
                 tvItemTitle.text = tvshow.title
-                tvItemYear.text = itemView.resources.getString(R.string.release_year, tvshow.year)
+                tvItemYear.text = tvshow.year
+                tvItemGenre.text = tvshow.genres
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailTvshowActivity::class.java)
                     intent.putExtra(DetailTvshowActivity.EXTRA_TVSHOW, tvshow.tvshowId)

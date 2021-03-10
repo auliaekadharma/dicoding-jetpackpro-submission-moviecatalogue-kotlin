@@ -21,7 +21,7 @@ class MovieFragment : Fragment(), MovieFragmentCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fragmentMovieBinding = FragmentMovieBinding.inflate(layoutInflater, container, false)
+        fragmentMovieBinding = FragmentMovieBinding.inflate(inflater, container, false)
         return fragmentMovieBinding.root
     }
 
@@ -35,7 +35,7 @@ class MovieFragment : Fragment(), MovieFragmentCallback {
             with(fragmentMovieBinding.rvMovie) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
-                adapter = movieAdapter
+                this.adapter = movieAdapter
             }
         }
     }
@@ -46,7 +46,7 @@ class MovieFragment : Fragment(), MovieFragmentCallback {
             ShareCompat.IntentBuilder
                     .from(requireActivity())
                     .setType(mimeType)
-                    .setChooserTitle("Bagikan aplikasi ini sekarang.")
+                    .setChooserTitle("Bagikan Movie ini sekarang.")
                     .setText(resources.getString(R.string.share_text, movie.title))
                     .startChooser()
         }

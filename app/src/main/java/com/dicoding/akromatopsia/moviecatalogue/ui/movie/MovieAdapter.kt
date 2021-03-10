@@ -35,17 +35,19 @@ class MovieAdapter(private val callback: MovieFragmentCallback) : RecyclerView.A
 
     override fun getItemCount(): Int = listMovies.size
 
-    class MovieViewHolder(private val binding: ItemsMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(private val binding: ItemsMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("StringFormatInvalid")
         fun bind(movie: MovieEntity) {
             with(binding) {
                 tvItemTitle.text = movie.title
-                tvItemYear.text = itemView.resources.getString(R.string.release_year, movie.year)
+                tvItemYear.text = movie.year
+                tvItemGenre.text = movie.genres
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailMovieActivity::class.java)
                     intent.putExtra(DetailMovieActivity.EXTRA_MOVIE, movie.movieId)
                     itemView.context.startActivity(intent)
                 }
+                imgShare.setOnClickListener { callback.onShareClick(movie) }
                 Glide.with(itemView.context)
                         .load(movie.poster)
                         .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)

@@ -1,14 +1,15 @@
 package com.dicoding.akromatopsia.moviecatalogue.ui.detail
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.dicoding.akromatopsia.moviecatalogue.R
-import com.dicoding.akromatopsia.moviecatalogue.databinding.ActivityDetailMovieBinding
+import com.dicoding.akromatopsia.moviecatalogue.data.TvshowEntity
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ActivityDetailTvshowBinding
-import com.dicoding.akromatopsia.moviecatalogue.databinding.ContentDetailMovieBinding
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ContentDetailTvshowBinding
+import com.dicoding.akromatopsia.moviecatalogue.utils.DataDummy
 
 class DetailTvshowActivity : AppCompatActivity() {
 
@@ -29,6 +30,32 @@ class DetailTvshowActivity : AppCompatActivity() {
         setSupportActionBar(activityDetailTvshowBinding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val extras = intent.extras
+        if (extras != null) {
+            val tvshowId = extras.getString(EXTRA_TVSHOW)
+            if (tvshowId != null) {
+                for (tvshow in DataDummy.generateDummyTvshow()) {
+                    if (tvshow.tvshowId == tvshowId) {
+                        populateTvshow(tvshow)
+                    }
+                }
+            }
+        }
 
+    }
+
+    private fun populateTvshow(tvshowEntity: TvshowEntity) {
+        detailContentBinding.textTitle.text = tvshowEntity.title
+        detailContentBinding.textDescription.text = tvshowEntity.description
+        detailContentBinding.textYear.text = tvshowEntity.year
+        detailContentBinding.textGenre.text = tvshowEntity.genres
+        detailContentBinding.textDuration.text = tvshowEntity.duration
+
+        Glide.with(this)
+                .load(tvshowEntity.poster)
+                .transform(RoundedCorners(20))
+                .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error))
+                .into(detailContentBinding.imagePoster)
     }
 }

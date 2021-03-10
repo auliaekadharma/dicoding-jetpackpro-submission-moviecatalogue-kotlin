@@ -46,7 +46,7 @@ class TvshowFragment : Fragment(), TvshowFragmentCallback {
             ShareCompat.IntentBuilder
                 .from(requireActivity())
                 .setType(mimeType)
-                .setChooserTitle("Bagikan aplikasi ini sekarang.")
+                .setChooserTitle("Bagikan TV Show ini sekarang.")
                 .setText(resources.getString(R.string.share_text, tvshow.title))
                 .startChooser()
         }
