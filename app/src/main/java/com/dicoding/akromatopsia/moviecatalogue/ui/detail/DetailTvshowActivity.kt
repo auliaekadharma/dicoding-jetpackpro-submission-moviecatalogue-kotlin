@@ -2,10 +2,12 @@ package com.dicoding.akromatopsia.moviecatalogue.ui.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.akromatopsia.moviecatalogue.R
+import com.dicoding.akromatopsia.moviecatalogue.data.MovieEntity
 import com.dicoding.akromatopsia.moviecatalogue.data.TvshowEntity
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ActivityDetailTvshowBinding
 import com.dicoding.akromatopsia.moviecatalogue.databinding.ContentDetailTvshowBinding
@@ -30,15 +32,14 @@ class DetailTvshowActivity : AppCompatActivity() {
         setSupportActionBar(activityDetailTvshowBinding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailTvshowViewModel::class.java]
+
         val extras = intent.extras
         if (extras != null) {
             val tvshowId = extras.getString(EXTRA_TVSHOW)
             if (tvshowId != null) {
-                for (tvshow in DataDummy.generateDummyTvshow()) {
-                    if (tvshow.tvshowId == tvshowId) {
-                        populateTvshow(tvshow)
-                    }
-                }
+                viewModel.setSelectedTvshow(tvshowId)
+                populateTvshow(viewModel.getTvshow() as TvshowEntity)
             }
         }
 

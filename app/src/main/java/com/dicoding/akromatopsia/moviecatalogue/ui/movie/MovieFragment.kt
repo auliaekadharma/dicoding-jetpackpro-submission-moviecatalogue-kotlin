@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.akromatopsia.moviecatalogue.R
 import com.dicoding.akromatopsia.moviecatalogue.data.MovieEntity
@@ -29,9 +30,12 @@ class MovieFragment : Fragment(), MovieFragmentCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val movies = DataDummy.generateDummyMovies()
+            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MovieViewModel::class.java]
+            val movies = viewModel.getMovies()
+
             val movieAdapter = MovieAdapter(this)
             movieAdapter.setMovies(movies)
+
             with(fragmentMovieBinding.rvMovie) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)

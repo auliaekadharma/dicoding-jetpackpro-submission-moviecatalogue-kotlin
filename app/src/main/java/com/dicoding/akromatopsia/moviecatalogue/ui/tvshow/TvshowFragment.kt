@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.akromatopsia.moviecatalogue.R
 import com.dicoding.akromatopsia.moviecatalogue.data.TvshowEntity
 import com.dicoding.akromatopsia.moviecatalogue.databinding.FragmentTvshowBinding
+import com.dicoding.akromatopsia.moviecatalogue.ui.movie.MovieViewModel
 import com.dicoding.akromatopsia.moviecatalogue.utils.DataDummy
 
 class TvshowFragment : Fragment(), TvshowFragmentCallback {
@@ -29,9 +31,12 @@ class TvshowFragment : Fragment(), TvshowFragmentCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val tvshows = DataDummy.generateDummyTvshow()
+            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[TvshowViewModel::class.java]
+            val tvshows = viewModel.getTvshows()
+
             val adapter = TvshowAdapter(this)
             adapter.setTvshows(tvshows)
+
             with(fragmentTvshowBinding.rvTvshow) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
